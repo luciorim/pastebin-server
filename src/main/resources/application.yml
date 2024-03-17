@@ -1,5 +1,9 @@
 server:
   port: 8080
+  error:
+    include-message: always
+  servlet:
+    context-path: "/api"
 
 spring:
   datasource:
@@ -14,6 +18,16 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
     show-sql: true
     generate-ddl: true
     defer-datasource-initialization: true
+
+
+security:
+  jwt:
+    token:
+      secret-key: secret-key
+      expiration: 600000 # 10 min
+      refresh-expiration: 3600000 #1h
+
